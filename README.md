@@ -17,6 +17,14 @@
 
     $ docker run -t -i --name=gcloud-golang-dev patrinhani/gcloud-golang bash
 
+    for Windows:
+    - Create a folder called "DockerHome" on  c:\Users\[username]
+    $ docker run --rm -t -i -e WHOAMI=$(whoami) --name=analytics-j-img-test -v //c/Users/[username]/DockerHome:/home  patrinhani/ciandt-analytics-j-storing-handson
+
+    for Linux / MacOS:
+    - Create a folder called "DockerHome" on  ~/
+    $ docker run --rm -t -i -e WHOAMI=$(whoami) --name=analytics-j-img-test -v ~/DockerHome:/home  patrinhani/ciandt-analytics-j-storing-handson
+
 ## Configuring your Google Cloud Account into the container
 
 Run the commands bellow on your container
