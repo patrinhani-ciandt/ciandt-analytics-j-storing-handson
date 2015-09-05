@@ -37,10 +37,26 @@ RUN curl -0 http://central.maven.org/maven2/org/mortbay/jetty/alpn/alpn-boot/7.1
 RUN echo "export HBASE_CLASSPATH=/hbase/lib/bigtable/bigtable-hbase-0.1.9.jar" >>/hbase/conf/hbase-env.sh && \
     echo "export HBASE_OPTS=\"${HBASE_OPTS} -Xms1024m -Xmx2048m -Xbootclasspath/p:/hbase/lib/bigtable/alpn-boot-7.1.3.v20150130.jar\""  >>/hbase/conf/hbase-env.sh
 
-ADD . /hbase/conf
+ADD hbase/conf/. /hbase/conf
+
+ADD gopath/src/. /gopath/src
 
 ENV PATH /hbase/bin:$PATH
 
 # End - HBase Client
+
+# Env setup
+
+WORKDIR /gopath/src
+
+RUN go get golang.org/x/net/context
+RUN go get golang.org/x/oauth2/google
+RUN go get google.golang.org/cloud
+RUN go get google.golang.org/cloud/bigtable
+
+RUN go install ciandt.golang.org/libs/gbigtable
+RUN go install ciandt.golang.org/libs/ioutil
+
+WORKDIR /gopath/src/app
 
 EXPOSE 8080

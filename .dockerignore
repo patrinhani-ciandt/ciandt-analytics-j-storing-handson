@@ -3,3 +3,5 @@
 temp?
 *.md
 !LICENCSE.md
+build-docker-image.sh
+start-test-image.sh
