@@ -15,7 +15,7 @@
 
 ## Initializing the container
 
-    $ docker run -t -i --name=gcloud-golang-dev patrinhani/gcloud-golang bash
+    $ docker run -t -i --name=analytics-j-storing-handson patrinhani/ciandt-analytics-j-storing-handson bash
 
     for Windows:
     - Create a folder called "DockerHome" on  c:\Users\[username]
